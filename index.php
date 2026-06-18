@@ -30,7 +30,7 @@ if (!isset($_SESSION['carrito'])) {
 
 <header class="main-header">
 
-<div class="logo">👕 <span>Bout Bad Boyz</span></div>
+<div class="logo">👕 <span>Boutique Bad Boys</span></div>
 
 <nav class="nav-menu">
 

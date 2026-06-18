@@ -20,58 +20,58 @@ GROUP BY p.id
 
 <body>
 
-<!-- HEADER -->
+<!-- HEADER --><div class="contenedor">
 
-<div class="admin-header">
+<h1 class="titulo">📊 Estadísticas de productos</h1>
 
-<h2 class="logo">📊 Panel de estadísticas</h2>
-
-<div class="menu">
-
-
-<a href="agregar_publicidad.php" class="btn-menu">🚀 Agregar lanzamiento</a>
-
-<a href="proximamente.php" class="btn-menu">👁 Ver anuncios</a>
-
-<a href="admin_anuncios.php" class="btn-menu">🏠 Inicio</a>
-
-
-</div>
-
-</div>
-
-
-<!-- CONTENEDOR -->
-
-<div class="contenedor">
-
-<h1>Estadísticas de productos</h1>
+<div class="card-estadisticas">
 
 <table class="tabla-estadisticas">
 
+<thead>
 <tr>
 <th>Producto</th>
-<th>👍 Lo comprarían</th>
-<th>👎 No lo comprarían</th>
+<th>👍 Interés</th>
+<th>👎 Rechazo</th>
+<th>📈 Popularidad</th>
 </tr>
+</thead>
 
-<?php while($e = $estadisticas->fetch_assoc()): ?>
+<tbody>
+
+<?php while($e = $estadisticas->fetch_assoc()): 
+
+$total = $e['si'] + $e['no'];
+$porcentaje = $total > 0 ? round(($e['si'] / $total) * 100) : 0;
+
+?>
 
 <tr>
 
-<td><?= $e['nombre'] ?></td>
+<td class="producto"><?= $e['nombre'] ?></td>
 
 <td class="si"><?= $e['si'] ?></td>
 
 <td class="no"><?= $e['no'] ?></td>
 
+<td>
+
+<div class="barra">
+    <div class="progreso" style="width: <?= $porcentaje ?>%"></div>
+</div>
+
+<span class="porcentaje"><?= $porcentaje ?>%</span>
+
+</td>
+
 </tr>
 
 <?php endwhile; ?>
+
+</tbody>
 
 </table>
 
 </div>
 
-</body>
-</html>
+</div>
